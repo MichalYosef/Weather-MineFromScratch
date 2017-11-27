@@ -1,0 +1,34 @@
+{
+  "name": "weather-minefromscratch",
+  "version": "1.0.0",
+  "description": "Learning angular-js services and routing plus external weather api call",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server ./app -8000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichalYosef/Weather-MineFromScratch.git"
+  },
+  "keywords": [
+    "learn",
+    "AngularJS",
+    "route",
+    "service",
+    "weather",
+    "api"
+  ],
+  "author": "Michal Yosef",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichalYosef/Weather-MineFromScratch/issues"
+  },
+  "homepage": "https://github.com/MichalYosef/Weather-MineFromScratch#readme",
+  "dependencies": {
+    "angular": "^1.6.7",
+    "angular-route": "^1.6.7",
+    "bootstrap": "^3.3.7",
+    "http-server": "^0.10.0"
+  }
+}
