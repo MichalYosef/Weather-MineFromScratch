@@ -4,7 +4,7 @@
   "description": "Learning angular-js services and routing plus external weather api call",
   "main": "index.js",
   "scripts": {
-    "start": "http-server ./app -8000",
+    "start": "http-server ./ -8000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
