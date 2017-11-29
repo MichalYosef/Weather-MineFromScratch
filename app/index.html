@@ -1,59 +1,40 @@
 <!DOCTYPE html>
-<html ng-app="liveWeatherApp">
+<html ng-app="codeSchoolAngularTutApp">
     <head>
         <meta charset="utf-8">
-        <title>Live Weather</title>
+        <title>codeSchoolAngularTutApp</title>
+        <!-- http://campus.codeschool.com/courses/shaping-up-with-angularjs -->
         <link rel="stylesheet" href='../node_modules/bootstrap/dist/css/bootstrap.min.css'>
         <link rel="stylesheet" href='app.css'>
         
     </head>
-    <body>
+    <body class="list-group" ng-controller="StoreController as store">
+        <!--  Store Header  -->
+        <header>
+            <h2 class="text-center">– an Angular store –</h2>
+        </header>
 
-        <h4>Wellcome to {{"Weather " + "by city"}}</h4>
-        <div ng-controller="getWeatherCtrl as weather" class ="container-fluid">
-            <div ng-repeat="city in weather.cities" class="row">
-                <div ng-hide="city.hide">
-                    <h2>{{city.cityName}}</h2>
-                    <button ng-show="city.enabled">GetWeather</button>
-                </div>  
-                <section> <!--ng-init="tab = 1"-->
-                    <ul class="nav nav-pills">
-                        <li ng-class="{active:tab === 1}">
-                            <a href ng-click="tab = 1">About {{}}</a>
-                        </li>
-                        <li ng-class="{active:tab === 2}">
-                            <a href ng-click="tab = 2">Resturants in{{}}</a>
-                        </li>
-                        <li ng-class="{active:tab === 3}">
-                            <a href ng-click="tab = 3">Reviews</a>
-                        </li>
-                    </ul>
-                </section>
-        
-                <div class="panel" ng-show="tab === 1">
-                    <h4>About{{city.cityName}}</h4>
-                    <blockquote>Coming soon...</blockquote>
-                </div>
-                <div class="panel" ng-show="tab === 2">
-                    <h4>Resturants in{{city.cityName}}</h4>
-                    <blockquote>Coming soon...</blockquote>
-                </div>
-                <div class="panel" ng-show="tab === 3">
-                    <h4>Reviews about{{city.cityName}}</h4>
-                    <blockquote>Not yest...</blockquote>
-                </div>  
-            </div>
-        </div>
+        <!--  Products Container  -->
+    <div class="list-group">
+      <!--  Product Container  -->
+      <div class="list-group-item" ng-repeat="product in store.products">
+        <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
 
-        
+        <!-- Image Gallery  -->
+        <product-gallery></product-gallery>
+
+        <!-- Product Tabs  -->
+        <product-tabs></product-tabs>
+      </div>
+
+    </div>
         
 
         <script src="../node_modules/angular/angular.min.js"></script>
         <script src="../node_modules/angular-route/angular-route.min.js"></script>
+        <script src="product.js"></script>
         <script src="app.js"></script>
-        <!-- <script src="getWeatherCtrl.js"></script>
-        <script src="service.js"></script>
-        <script src='filter.js'></script>
-        <script src="config.js"></script> -->
+        
+       
     </body>
 </html>

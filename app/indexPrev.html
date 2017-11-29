@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="liveWeatherApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Live Weather</title>
+        <link rel="stylesheet" href='../node_modules/bootstrap/dist/css/bootstrap.min.css'>
+        <link rel="stylesheet" href='app.css'>
+        
+    </head>
+    <body ng-controller="getWeatherCtrl as weather">
+
+        <h4>Wellcome to {{"Weather " + "by city"}}</h4>
+
+        <div class ="container-fluid">
+            <div ng-repeat="city in weather.cities" class="row">
+                <div ng-hide="city.hide">
+                    <h2>{{city.cityName}}</h2>
+                    <button ng-show="city.enabled">GetWeather</button>
+                </div>  
+                <section ng-controller="PanelController as panel"> 
+                    <ul class="nav nav-pills">
+                        <li ng-class="{active:panel.isSelected(1)}">
+                            <a href ng-click="panel.selectTab(1)">About {{city.cityName}}</a>
+                        </li>
+                        <li ng-class="{active:panel.isSelected(2)}">
+                            <a href ng-click="panel.selectTab(2)">Resturants in{{city.cityName}}</a>
+                        </li>
+                        <li ng-class="{active:panel.isSelected(3)}">
+                            <a href ng-click="panel.selectTab(3)">Gallery of{{city.cityName}}</a>
+                        </li>
+                    </ul>        
+                    <div class="panel" ng-show="panel.isSelected(1)">
+                        <h4>About{{city.cityName}}</h4>
+                        <blockquote>Coming soon...</blockquote>
+                    </div>
+                    <div class="panel" ng-show="panel.isSelected(2)">
+                        <h4>Resturants in{{city.cityName}}</h4>
+                        <blockquote>Coming soon...</blockquote>
+                    </div>
+                    <div class="panel" ng-show="panel.isSelected(3)">
+                        <h4>Gallery of {{ city.cityName}}</h4>
+                             <!-- Image Gallery  -->
+                        <div ng-controller="GalleryController  as gallery" class='gallery' ng-show="city.images.length">
+                            <div class="img-wrap">
+                                <img ng-src="{{product.images[gallery.current].src}}" />
+                            </div>
+                            <ul class="list-inline thumbs">
+                            <li class="thumbnail" ng-repeat="image in city.images">
+                                <img ng-src="{{image}}" />
+                            </li>
+                            </ul>
+                        </div>
+                    </div>  
+                </section>
+            </div> <!--ng-repeat="city in weather.cities" class="row"-->
+        </div>
+
+        
+        
+
+        <script src="../node_modules/angular/angular.min.js"></script>
+        <script src="../node_modules/angular-route/angular-route.min.js"></script>
+        <script src="appPrev.js"></script>
+        <!-- <script src="getWeatherCtrl.js"></script>
+        <script src="service.js"></script>
+        <script src='filter.js'></script>
+        <script src="config.js"></script> -->
+    </body>
+</html>
